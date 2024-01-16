@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Smart Cloth Admin Dashboard</title>
+	<script src="chart.umd.js"></script>
+	
+</head>
+<body>
+	<link rel="stylesheet" href="Style.css">
+	<header class="navigation-container">
+		
+		<h1 class="nav-title" >Smart Cloth</h1>
+		<nav  class="nav">
+			<ul class="nav-container">
+				<!--<li class="nav-items "><a href="#" class="active"></a></li>
+				-->
+				
+				
+				<button id="infoBtn" class="nav-items">info</button>
+				<button id="NetBtn" class="nav-items">Network</button>
+				<li class="nav-items "><a href="#">Battery Indicator</a></li>
+			</ul>
+		</nav>
+
+	</header>
+	
+	<div class="dashboard-container">
+		<div class="dashboard-col-1">
+			<div class="Graph-viewer">
+				<canvas id="ECG"class="Sensor-ECG">
+
+				</canvas>
+			</div>
+			
+			<div class="othersensor-container">
+				<div class="Sensor-items">
+					<div class="Sensor">
+						<h1 id="Sensor-1">00</h1>
+						<p>Temperature</p>
+					</div>
+				</div>
+				<div class="Sensor-items">
+					<div class="Sensor">
+						<h1 id="Sensor-2">00</h1>
+						<p>BPM</p>
+						
+					</div>
+				</div>
+				<div class="Sensor-items">
+					<div class="Sensor">
+						<h1 id="Sensor-3">00</h1>
+						<p>Air Detector</p>
+						
+					</div>
+				</div>
+				<div class="Sensor-items">
+					<div class="Sensor">
+						<h1 id="Sensor-4">00</h1>
+						<p>Gulcose Level</p>
+						
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+		<div class="dashboard-col-2">
+			<div class="message-notification">
+				message and Alert
+			</div>
+			<div class="motor-control">
+				<label for="motor-speed">Motor Speed Control</label> 
+				<input id="motor-speed" type="range">
+				<label>Anti-Clockwise or Clockwise</label>
+				<input type="radio">
+			</div>
+			<div id="connected-network"class="current-network">
+				<label for="connected-network">Connected Network</label>
+				<h3>Joel Wifi</h3>
+				<h4> 90%</h4>
+				
+			</div>
+			<div class="server-info">
+				<label for="Device-Ip">Device Ip Address</label>
+				<h3 id="Device-Ip">10.20.0.1</h3>
+				<label for="Wifi-Connected-Ip">Connected Device Ip Address</label>
+				<h4 id="Wifi-Connected-Ip">192.63.3.147</h3>
+				
+			</div>
+			
+
+		</div>
+		
+		
+
+		
+
+		
+	</div>
+	<!-- Network Connectivity Modal -->
+	<div id="NetworkModel" class="modal">
+		<span class="close">X</span>
+		<!-- Modal content -->
+		<div class="modal-content">
+		  	
+			<div class="wifi-container">
+				<div class="wifi-credentials">
+					<label for="ssid">SSID</label><br>
+					<input type="text" id="ssid" name="fname"><br>
+					<label for="password">Password</label><br>
+					<input type="password" id="password" name="lname"><br>
+					<button class="wifi-btn">Connect</button>
+					<input id="Showpassword" type="checkbox" onclick="Showpassword()" >
+					<label for="Showpassword">Show Password </label>
+					
+				</div>
+				<div class="network-scan">
+					<div class="networks-status">
+						<h3>Available Networks</h3>
+						<span> Scanning... </span>
+					</div>
+										
+					<div class="networks-container">
+						<div class="network-channel" id="1" onclick="C(this)">
+							<p >Free Wifi</p>
+							<span>None</span>
+							<div class="secure-status"></div>
+							<div class="signal-strength"></div>
+						</div>
+						<div class="network-channel" id="2"onclick="C(this)">
+							<p>Joel wifi</p>
+							<span>WEP</span>
+							<div class="secure-status"></div>
+							<div class="signal-strength"></div>
+						</div>
+						<div class="network-channel" id="3" onclick="C(this)">
+							<p>jio 4G</p>
+							<span>WPA</span>
+							<div class="secure-status"></div>
+							<div class="signal-strength"></div>
+						</div>
+						<div class="network-channel" onclick="C(this)">
+							<p>DESKTOP-INTEL</p>
+							<span>WPA2</span>
+							<div class="secure-status"></div>
+							<div class="signal-strength"></div>
+						</div>
+						<div class="network-channel" onclick="C(this)">
+							<p>Vi-Lite</p>
+							<span>WAPI</span>
+							<div class="secure-status"></div>
+							<div class="signal-strength"></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	  
+	</div>
+	<!-- Info Modal of Smart Cloth-->
+	<div id="InfoModel" class="modal">
+		<span class="close">X</span>
+		<!-- Modal content -->
+		<div class="modal-content">
+		  	
+			
+		</div>
+	  
+	</div>
+	<!--  Sensor Modal of Smart Cloth-->
+	<div id="SensorModel" class="modal">
+		<span class="close">X</span>
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="sensorcontent">
+				<div class="modal-Graph-viewer">
+					<canvas id="sensorholder" class="Sensorgraph">
+
+					</canvas>
+					
+				</div>
+				<div class="sensor-content">
+					<h1 id="sensor-name">Temperature</h1>
+					<div id="current-data">000</div>
+					
+				</div>
+			</div>
+		</div>
+	  
+	</div>
+	
+	
+	<script src="index.js" type="text/javascript"></script>	
+</body>
+</html>
